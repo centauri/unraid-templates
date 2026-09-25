@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>
+Unraid templates for **WeatherNode**, a self-hosted website for your personal weather station, maintained by CentauriPrime.
+
+WeatherNode shows live readings, forecasts, radar, history and statistics, and works with Ecowitt, Davis WeatherLink, Weather Underground, Ambient Weather, WeatherFlow Tempest and more.
+
+For questions and bug reports, open an issue at https://github.com/centauri/WeatherNode/issues
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/centauri/unraid-templates/main/icons/weathernode.png</Icon>
+  <WebPage>https://www.weathernode.dev/</WebPage>
+  <DonateLink>https://www.buymeacoffee.com/centauriprime</DonateLink>
+  <DonateText>Support WeatherNode</DonateText>
+</CommunityApplications>

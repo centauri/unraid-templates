@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>WeatherNode</Name>
+  <Repository>ghcr.io/centauri/weathernode:latest</Repository>
+  <Registry>https://github.com/centauri/WeatherNode/pkgs/container/weathernode</Registry>
+  <Network>bridge</Network>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+
+  <Icon>https://raw.githubusercontent.com/centauri/unraid-templates/main/icons/weathernode.png</Icon>
+  <WebUI>http://[IP]:[PORT:80]/</WebUI>
+
+  <Overview>WeatherNode is a self-hosted website for your personal weather station. It shows live readings, forecasts, rain radar, history, records and statistics, and it can add air quality, pollen, tides, rivers, astronomy and more from free public sources.&#xD;
+&#xD;
+It reads data from Ecowitt, Davis WeatherLink, Weather Underground, Ambient Weather, WeatherFlow Tempest and several other stations and upload formats. You do not need a station to try it: forecasts and the other public data work on their own.&#xD;
+&#xD;
+Everything runs in this one container, including the background tasks that fetch new data every minute. On first start it creates its database and a secret key in the folders below. Open the WebUI to create your admin account, then follow the short setup.</Overview>
+
+  <Support>https://github.com/centauri/WeatherNode/issues</Support>
+  <Project>https://github.com/centauri/WeatherNode</Project>
+  <ReadMe>https://raw.githubusercontent.com/centauri/WeatherNode/main/README.md</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/centauri/unraid-templates/main/templates/weathernode.xml</TemplateURL>
+  <DonateText>Support WeatherNode</DonateText>
+  <DonateLink>https://www.buymeacoffee.com/centauriprime</DonateLink>
+
+  <Category>HomeAutomation: Network:Web</Category>
+  <ExtraSearchTerms>weather station ecowitt davis weatherlink tempest wunderground forecast radar meteo</ExtraSearchTerms>
+  <Requires>Nothing extra. A weather station, or an API key for an online weather source, is optional.</Requires>
+  <License>GPL-3.0</License>
+
+  <Screenshot>https://raw.githubusercontent.com/centauri/WeatherNode/main/screenshots/dashboard.webp</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/centauri/WeatherNode/main/screenshots/forecast.webp</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/centauri/WeatherNode/main/screenshots/radar.webp</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/centauri/WeatherNode/main/screenshots/history.webp</Screenshot>
+
+  <Config Name="WebUI Port" Target="80" Default="8080" Mode="tcp" Description="Port for the website." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+
+  <Config Name="Storage" Target="/var/www/html/storage" Default="/mnt/user/appdata/weathernode/storage" Mode="rw" Description="Logs, caches, uploads and the saved secret key (.app-key). Keep this folder in your backups: without the key, saved API keys and passwords cannot be read." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/weathernode/storage</Config>
+  <Config Name="Database" Target="/var/lib/weathernode" Default="/mnt/user/appdata/weathernode/database" Mode="rw" Description="The SQLite database with all readings and settings." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/weathernode/database</Config>
+
+  <Config Name="Site address (APP_URL)" Target="APP_URL" Default="" Mode="" Description="The address you open WeatherNode on, for example http://192.168.1.10:8080 or https://weather.example.com. Used for links in e-mails and share images." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Admin e-mail (optional)" Target="ADMIN_EMAIL" Default="" Mode="" Description="Creates the first admin account on first start. Leave empty to create it in the browser instead." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Admin password (optional)" Target="ADMIN_PASSWORD" Default="" Mode="" Description="Password for the admin account above. Only used on first start." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+
+  <Config Name="APP_KEY" Target="APP_KEY" Default="" Mode="" Description="Leave empty. A key is generated on first start and saved in the Storage folder. Only set this to move an existing install; changing it later makes saved API keys and passwords unreadable." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="Run scheduler in this container" Target="DOCKER_RUN_SCHEDULER" Default="true" Mode="" Description="Runs the background tasks that fetch weather data every minute. Leave this on." Type="Variable" Display="advanced" Required="true" Mask="false">true</Config>
+  <Config Name="DB_CONNECTION" Target="DB_CONNECTION" Default="sqlite" Mode="" Description="Database type. Leave on sqlite unless you run MySQL yourself (then also set DB_HOST, DB_PORT, DB_USERNAME and DB_PASSWORD)." Type="Variable" Display="advanced" Required="true" Mask="false">sqlite</Config>
+  <Config Name="DB_DATABASE" Target="DB_DATABASE" Default="/var/lib/weathernode/database.sqlite" Mode="" Description="Location of the SQLite file inside the container. It must stay inside the Database folder above." Type="Variable" Display="advanced" Required="true" Mask="false">/var/lib/weathernode/database.sqlite</Config>
+  <Config Name="CACHE_STORE" Target="CACHE_STORE" Default="file" Mode="" Description="Where the cache is kept. Leave on file." Type="Variable" Display="advanced" Required="true" Mask="false">file</Config>
+  <Config Name="CONTAINERIZED" Target="CONTAINERIZED" Default="true" Mode="" Description="Tells WeatherNode it runs in a container, so the Updates page tells you to update the container instead of using the in-app updater." Type="Variable" Display="advanced" Required="true" Mask="false">true</Config>
+  <Config Name="APP_ENV" Target="APP_ENV" Default="production" Mode="" Description="Leave on production." Type="Variable" Display="advanced" Required="true" Mask="false">production</Config>
+  <Config Name="APP_DEBUG" Target="APP_DEBUG" Default="false" Mode="" Description="Shows detailed error pages. Only turn on briefly while troubleshooting, as it can reveal settings." Type="Variable" Display="advanced" Required="true" Mask="false">false</Config>
+</Container>
