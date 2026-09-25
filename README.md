@@ -18,7 +18,8 @@ https://raw.githubusercontent.com/centauri/unraid-templates/main/templates/weath
 - Two folders under `/mnt/user/appdata/weathernode/`:
   - `storage` holds logs, caches and the secret key (`storage/app/.app-key`) that encrypts saved API keys and passwords.
   - `database` holds the SQLite database.
-- The only field you must fill in is **Site address (APP_URL)**, the address you open WeatherNode on.
+- The website runs on port **10130**, which no other app in Community Applications uses by default.
+- The only field you must fill in is **Site address (APP_URL)**, the address you open WeatherNode on, for example `http://192.168.1.10:10130`.
 
 Back up both folders. Without the key in `storage`, saved API keys and passwords cannot be read.
 

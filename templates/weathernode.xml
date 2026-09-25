@@ -33,12 +33,12 @@ Everything runs in this one container, including the background tasks that fetch
   <Screenshot>https://raw.githubusercontent.com/centauri/WeatherNode/main/screenshots/radar.webp</Screenshot>
   <Screenshot>https://raw.githubusercontent.com/centauri/WeatherNode/main/screenshots/history.webp</Screenshot>
 
-  <Config Name="WebUI Port" Target="80" Default="8080" Mode="tcp" Description="Port for the website." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="WebUI Port" Target="80" Default="10130" Mode="tcp" Description="Port for the website. 10130 is unused by other apps in Community Applications (and a nod to 1013 hPa, normal air pressure at sea level)." Type="Port" Display="always" Required="true" Mask="false">10130</Config>
 
   <Config Name="Storage" Target="/var/www/html/storage" Default="/mnt/user/appdata/weathernode/storage" Mode="rw" Description="Logs, caches, uploads and the saved secret key (.app-key). Keep this folder in your backups: without the key, saved API keys and passwords cannot be read." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/weathernode/storage</Config>
   <Config Name="Database" Target="/var/lib/weathernode" Default="/mnt/user/appdata/weathernode/database" Mode="rw" Description="The SQLite database with all readings and settings." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/weathernode/database</Config>
 
-  <Config Name="Site address (APP_URL)" Target="APP_URL" Default="" Mode="" Description="The address you open WeatherNode on, for example http://192.168.1.10:8080 or https://weather.example.com. Used for links in e-mails and share images." Type="Variable" Display="always" Required="true" Mask="false"></Config>
+  <Config Name="Site address (APP_URL)" Target="APP_URL" Default="" Mode="" Description="The address you open WeatherNode on, for example http://192.168.1.10:10130 or https://weather.example.com. Used for links in e-mails and share images." Type="Variable" Display="always" Required="true" Mask="false"></Config>
   <Config Name="Admin e-mail (optional)" Target="ADMIN_EMAIL" Default="" Mode="" Description="Creates the first admin account on first start. Leave empty to create it in the browser instead." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="Admin password (optional)" Target="ADMIN_PASSWORD" Default="" Mode="" Description="Password for the admin account above. Only used on first start." Type="Variable" Display="always" Required="false" Mask="true"></Config>
 
