@@ -10,6 +10,10 @@
   <ReadMe>https://raw.githubusercontent.com/centauri/blink-camera-relay/main/README.md</ReadMe>
   <Project>https://github.com/centauri/blink-camera-relay</Project>
   <Overview>Unofficial Blink live-view bridge with web onboarding, RTSP and ONVIF in one container. Cloud login is still required. Set the server LAN IP and a dashboard password. Use a trusted LAN only. Requires free TCP ports 8787, 8554, 8555 and the selected ONVIF port (default 8080), plus UDP 3702. Session renewals can cause video gaps.</Overview>
+  <Icon>https://raw.githubusercontent.com/centauri/blink-camera-relay/main/docs/assets/icon.png</Icon>
+  <Screenshot>https://raw.githubusercontent.com/centauri/blink-camera-relay/main/docs/screenshots/monitor.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/centauri/blink-camera-relay/main/docs/screenshots/camera-settings.jpg</Screenshot>
+  <Screenshot>https://raw.githubusercontent.com/centauri/blink-camera-relay/main/docs/screenshots/onboarding.jpg</Screenshot>
   <Category>HomeAutomation:</Category>
   <WebUI>http://[IP]:8787/</WebUI>
   <ExtraParams>--stop-timeout=90 --tmpfs /run/blink:mode=0700</ExtraParams>
