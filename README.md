@@ -1,6 +1,9 @@
 # Unraid templates
 
-Unraid Community Applications templates for [WeatherNode](https://github.com/centauri/WeatherNode).
+Unraid application templates maintained by CentauriPrime.
+
+- [WeatherNode](https://github.com/centauri/WeatherNode)
+- [Blink Camera Relay](https://github.com/centauri/blink-camera-relay) (experimental; Community Apps listing not yet verified)
 
 ## Install
 
@@ -32,3 +35,19 @@ Open an issue at https://github.com/centauri/WeatherNode/issues
 - `ca_profile.xml`: the repository profile shown in Community Applications.
 - `templates/weathernode.xml`: the WeatherNode container template.
 - `icons/weathernode.png`: the app icon.
+
+## Blink Camera Relay
+
+The authoritative template is [templates/blink-camera-relay.xml](templates/blink-camera-relay.xml).
+
+Raw XML: https://raw.githubusercontent.com/centauri/unraid-templates/main/templates/blink-camera-relay.xml
+
+This template runs one container with the onboarding dashboard, Blink livestream
+worker, MediaMTX and ONVIF adapter. It uses the experimental `edge` image and
+host networking. Set the server LAN IPv4 address and an admin password of at
+least 12 characters. Appdata is stored under `/mnt/user/appdata/blink-camera-relay`.
+Open `http://SERVER_IP:8787` and sign in as `admin`, then complete Blink onboarding.
+See the [application README](https://github.com/centauri/blink-camera-relay) for
+port requirements and limitations. This is not a claim of Community Apps approval.
+
+Support: https://github.com/centauri/blink-camera-relay/issues
