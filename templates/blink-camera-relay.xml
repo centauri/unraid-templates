@@ -18,6 +18,6 @@
   <WebUI>http://[IP]:8787/</WebUI>
   <ExtraParams>--stop-timeout=90 --tmpfs /run/blink:mode=0700</ExtraParams>
   <Config Name="Appdata" Target="/data" Default="/mnt/user/appdata/blink-camera-relay" Mode="rw" Description="Persistent camera configuration and account tokens" Type="Path" Display="always" Required="true" Mask="false"/>
-  <Config Name="Server LAN IPv4" Target="BRIDGE_HOST" Default="" Description="Actual Unraid LAN address" Type="Variable" Display="always" Required="true" Mask="false"/>
+  <Config Name="Advertised LAN IPv4" Target="BRIDGE_HOST" Default="" Description="Address reachable by your recorder: with Host networking, use the Unraid LAN/bond address; with a dedicated container IP on a custom network, use the container address. If DHCP has not assigned it yet, leave blank and set the LAN address in the app dashboard before enabling ONVIF." Type="Variable" Display="always" Required="false" Mask="false"/>
   <Config Name="Dashboard password" Target="BRIDGE_ADMIN_PASSWORD" Default="" Description="At least 12 characters; dashboard username is admin" Type="Variable" Display="always" Required="true" Mask="true"/>
 </Container>

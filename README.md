@@ -43,11 +43,17 @@ The authoritative template is [templates/blink-camera-relay.xml](templates/blink
 Raw XML: https://raw.githubusercontent.com/centauri/unraid-templates/main/templates/blink-camera-relay.xml
 
 This template runs one container with the onboarding dashboard, Blink livestream
-worker, MediaMTX and ONVIF adapter. It uses the experimental `edge` image and
-host networking. Set the server LAN IPv4 address and an admin password of at
+worker, MediaMTX and ONVIF adapter. It uses the versioned `latest` image and
+defaults to host networking. Set the advertised LAN IPv4 address and an admin password of at
 least 12 characters. Appdata is stored under `/mnt/user/appdata/blink-camera-relay`.
 Open `http://SERVER_IP:8787` and sign in as `admin`, then complete Blink onboarding.
 See the [application README](https://github.com/centauri/blink-camera-relay) for
-port requirements and limitations. This is not a claim of Community Apps approval.
+port requirements and limitations.
+
+For host networking, advertise the Unraid LAN/bond address. For a dedicated
+container IP on a custom network, advertise the container address. If DHCP has
+not assigned the address at installation time, leave the field blank and set
+the LAN address in the app dashboard before enabling ONVIF. This field does
+not configure DHCP or assign an IP address.
 
 Support: https://github.com/centauri/blink-camera-relay/issues
