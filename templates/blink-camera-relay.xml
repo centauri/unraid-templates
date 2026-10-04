@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>Blink-Camera-Relay</Name>
-  <Repository>ghcr.io/centauri/blink-camera-relay:edge</Repository>
+  <Repository>ghcr.io/centauri/blink-camera-relay:latest</Repository>
   <Registry>https://github.com/centauri/blink-camera-relay/pkgs/container/blink-camera-relay</Registry>
   <Network>host</Network>
   <Privileged>false</Privileged>
