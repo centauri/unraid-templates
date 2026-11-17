@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Plugin>
+  <Name>Unraid Advanced VM</Name>
+  <PluginURL>https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg</PluginURL>
+  <Icon>https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.png</Icon>
+  <Support>https://github.com/centauri/unraid-templates/issues</Support>
+  <Project>https://github.com/centauri/unraid-templates/tree/main/plugins/unraid-advanced-vm</Project>
+  <Overview>Manage VM hardware, snapshots and backups on Unraid 7.2 and later in the 7.x series. Review live and saved changes before applying them.</Overview>
+  <Category>Tools:Utilities</Category>
+  <MinVer>7.2.0</MinVer>
+  <MaxVer>7.999.999</MaxVer>
+  <Beta>true</Beta>
+  <License>GPL-2.0-only</License>
+</Plugin>

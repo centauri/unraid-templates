@@ -7,6 +7,8 @@ WeatherNode shows live readings, forecasts, radar, history and statistics, and w
 
 Also includes Blink Camera Relay, an experimental Blink live-view bridge with a dashboard, RTSP and ONVIF in one container.
 
+Unraid Advanced VM is a beta native plugin for VM hardware, protection and recovery.
+
 For questions and bug reports, use the Support link in the relevant app template.
   </Profile>
   <Icon>https://raw.githubusercontent.com/centauri/unraid-templates/main/icons/weathernode.png</Icon>

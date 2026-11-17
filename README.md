@@ -4,6 +4,7 @@ Unraid application templates maintained by CentauriPrime.
 
 - [WeatherNode](https://github.com/centauri/WeatherNode)
 - [Blink Camera Relay](https://github.com/centauri/blink-camera-relay) (experimental; Community Apps listing not yet verified)
+- [Unraid Advanced VM](plugins/unraid-advanced-vm/) (beta native plugin for Unraid 7.2 and later in the 7.x series)
 
 ## Install
 

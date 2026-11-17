@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PLUGIN name="unraid-advanced-vm" author="Unraid Advanced VM contributors" icon="unraid-advanced-vm.png" version="2026.11.17f" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
+  <FILE Run="/bin/bash" Method="install">
+    <INLINE>set -eu
+LC_ALL=C /usr/bin/awk -v mode=check '# SPDX-License-Identifier: GPL-2.0-only
+# Shared by the native installer and the diagnostic binary. Read OS metadata as
+# data, without sourcing it.
+function read_fields(path, fields,    line, eq, key, val, q, n) {
+    while ((n = (getline line &lt; path)) &gt; 0) {
+        eq = index(line, "=")
+        if (!eq) continue
+        key = substr(line, 1, eq - 1)
+        val = substr(line, eq + 1)
+        sub(/[[:space:]]+$/, "", val)
+        q = substr(val, 1, 1)
+        if ((q == "\"" || q == "'"'"'") &amp;&amp; substr(val, length(val)) == q)
+            val = substr(val, 2, length(val) - 2)
+        fields[key] = val
+    }
+    close(path)
+    return n == 0
+}
+function valid_version(v) {
+    return v ~ /^[0-9]+[.][0-9]+([.][0-9]+)?([-+][a-zA-Z0-9][a-zA-Z0-9.+-]*)?$/
+}
+BEGIN {
+    read_fields(root "/etc/unraid-version", marker)
+    if (!read_fields(root "/etc/os-release", release))
+        read_fields(root "/usr/lib/os-release", release)
+
+    id = tolower(release["ID"])
+    like = " " tolower(release["ID_LIKE"]) " "
+    split(like, parents)
+    for (i in parents) family[parents[i]] = 1
+    unraid_id = (id == "unraid-os" || id == "unraid")
+    fedora = (id == "fedora" || id == "ucore" || family["fedora"] || tolower(release["IMAGE_ID"]) == "ucore")
+    base = fedora ? "fedora" : ((id == "slackware" || family["slackware"]) ? "slackware" : (id ? "other" : "unknown"))
+    v = marker["version"]
+    marked = valid_version(v)
+    if (!marked) v = unraid_id &amp;&amp; valid_version(release["VERSION_ID"]) ? release["VERSION_ID"] : ""
+    split(v, parts, /[.]/)
+    split(release["VERSION_ID"], declared, /[.]/)
+    mismatch = unraid_id &amp;&amp; valid_version(release["VERSION_ID"]) &amp;&amp; declared[1]+0 != parts[1]+0
+
+    supported = 0
+    if (fedora)
+        reason = "Fedora-based host detected. This beta requires the Unraid 7 plugin system."
+    else if (parts[1]+0 &gt;= 8)
+        reason = "This Unraid release requires a separately validated plugin integration."
+    else if (mismatch || !marked || parts[1]+0 != 7 || parts[2]+0 &lt; 2 || (id &amp;&amp; !unraid_id &amp;&amp; id != "slackware"))
+        reason = "This beta requires Unraid 7.2 or later in the 7.x series."
+    else {
+        supported = 1
+        reason = ""
+    }
+    if (mode == "check") {
+        if (!supported) print reason
+        exit !supported
+    }
+    if (id !~ /^[a-z0-9._-]+$/) id = ""
+    printf "{\"unraid\":\"%s\",\"distribution\":\"%s\",\"base\":\"%s\",\"serviceSupported\":%s,\"reason\":\"%s\"}\n", v, id, base, supported ? "true" : "false", reason
+}
+'
+</INLINE>
+  </FILE>
+  <CHANGES>Beta for Unraid 7.2 and later in the 7.x series. Fedora and Unraid 8 require a future integration.</CHANGES>
+  <FILE Name="/boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.17f-x86_64-1.txz" Min="7.2.0">
+    <URL>https://github.com/centauri/unraid-templates/releases/download/unraid-advanced-vm-2026.11.17f/unraid-advanced-vm-2026.11.17f-x86_64-1.txz</URL>
+    <SHA256>c3f08c5f963cb64908a21511bf1be5b6217e802ba9a9ef9dee20a6ae7a9d0d17</SHA256>
+  </FILE>
+  <FILE Run="/bin/bash" Method="install">
+    <INLINE>set -eu
+printf '%s\n' 'c3f08c5f963cb64908a21511bf1be5b6217e802ba9a9ef9dee20a6ae7a9d0d17  /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.17f-x86_64-1.txz' | sha256sum --check --status
+rc=/usr/local/emhttp/plugins/unraid-advanced-vm/scripts/rc.avm
+if test -x "$rc"; then "$rc" stop; fi
+/sbin/upgradepkg --install-new /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.17f-x86_64-1.txz
+"$rc" start
+</INLINE>
+  </FILE>
+  <FILE Run="/bin/bash" Method="remove">
+    <INLINE>set -eu
+/usr/local/emhttp/plugins/unraid-advanced-vm/scripts/rc.avm stop
+/sbin/removepkg unraid-advanced-vm
+# Settings, recovery records, VM disks and backups are retained.
+</INLINE>
+  </FILE>
+</PLUGIN>
