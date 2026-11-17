@@ -4,7 +4,7 @@ Manage VM hardware, storage and networking, schedule backups and restore snapsho
 
 ## Installation and support
 
-Install from **Apps** or paste the following URL into **Plugins → Install Plugin**. Use **Plugins → Check for Updates** for later releases.
+For this beta, paste the following URL into **Plugins → Install Plugin**. Community Applications availability depends on its review and indexing process. Use **Plugins → Check for Updates** for later releases.
 
 ```text
 https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg
