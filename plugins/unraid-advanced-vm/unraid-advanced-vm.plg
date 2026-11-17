@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<PLUGIN name="unraid-advanced-vm" author="Unraid Advanced VM contributors" icon="unraid-advanced-vm.png" version="2026.11.17f" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
+<PLUGIN name="unraid-advanced-vm" author="centauri" icon="unraid-advanced-vm.png" version="2026.11.17f" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
   <FILE Run="/bin/bash" Method="install">
     <INLINE>set -eu
 LC_ALL=C /usr/bin/awk -v mode=check '# SPDX-License-Identifier: GPL-2.0-only
