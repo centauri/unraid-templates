@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<PLUGIN name="unraid-advanced-vm" author="centauri" icon="unraid-advanced-vm.png" version="2026.11.17k" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
+<PLUGIN name="unraid-advanced-vm" author="centauri" icon="unraid-advanced-vm.png" version="2026.11.19a" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
   <FILE Run="/bin/bash" Method="install">
     <INLINE>set -eu
 LC_ALL=C /usr/bin/awk -v mode=check '# SPDX-License-Identifier: GPL-2.0-only
@@ -64,16 +64,16 @@ BEGIN {
 </INLINE>
   </FILE>
   <CHANGES>Beta for Unraid 7.2 and later in the 7.x series. Fedora and Unraid 8 require a future integration.</CHANGES>
-  <FILE Name="/boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.17k-x86_64-1.txz" Min="7.2.0">
-    <URL>https://github.com/centauri/unraid-templates/releases/download/unraid-advanced-vm-2026.11.17k/unraid-advanced-vm-2026.11.17k-x86_64-1.txz</URL>
-    <SHA256>33e22877576737f0d4349da066512ee64ba0034f5bd835b0b353ad367274e4b7</SHA256>
+  <FILE Name="/boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19a-x86_64-1.txz" Min="7.2.0">
+    <URL>https://github.com/centauri/unraid-templates/releases/download/unraid-advanced-vm-2026.11.19a/unraid-advanced-vm-2026.11.19a-x86_64-1.txz</URL>
+    <SHA256>8f8b9fcfbc691b3c75869a0c3f75cf7edab240560121074e5b66780e4b15fcd0</SHA256>
   </FILE>
   <FILE Run="/bin/bash" Method="install">
     <INLINE>set -eu
-printf '%s\n' '33e22877576737f0d4349da066512ee64ba0034f5bd835b0b353ad367274e4b7  /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.17k-x86_64-1.txz' | sha256sum --check --status
+printf '%s\n' '8f8b9fcfbc691b3c75869a0c3f75cf7edab240560121074e5b66780e4b15fcd0  /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19a-x86_64-1.txz' | sha256sum --check --status
 rc=/usr/local/emhttp/plugins/unraid-advanced-vm/scripts/rc.avm
 if test -x "$rc"; then "$rc" stop; fi
-/sbin/upgradepkg --install-new /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.17k-x86_64-1.txz
+/sbin/upgradepkg --install-new /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19a-x86_64-1.txz
 "$rc" start
 </INLINE>
   </FILE>
