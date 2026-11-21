@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<PLUGIN name="unraid-advanced-vm" author="centauri" icon="unraid-advanced-vm.png" version="2026.11.19a" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
+<PLUGIN name="unraid-advanced-vm" author="centauri" icon="unraid-advanced-vm.png" version="2026.11.19d" pluginURL="https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg" support="https://github.com/centauri/unraid-templates/issues" min="7.2.0" max="7.999.999">
   <FILE Run="/bin/bash" Method="install">
     <INLINE>set -eu
 LC_ALL=C /usr/bin/awk -v mode=check '# SPDX-License-Identifier: GPL-2.0-only
@@ -35,12 +35,14 @@ BEGIN {
     unraid_id = (id == "unraid-os" || id == "unraid")
     fedora = (id == "fedora" || id == "ucore" || family["fedora"] || tolower(release["IMAGE_ID"]) == "ucore")
     base = fedora ? "fedora" : ((id == "slackware" || family["slackware"]) ? "slackware" : (id ? "other" : "unknown"))
+    # Older GNU awk can abort when an absent array field is passed to a function.
+    declared_version = release["VERSION_ID"] ""
     v = marker["version"]
     marked = valid_version(v)
-    if (!marked) v = unraid_id &amp;&amp; valid_version(release["VERSION_ID"]) ? release["VERSION_ID"] : ""
+    if (!marked) v = unraid_id &amp;&amp; valid_version(declared_version) ? declared_version : ""
     split(v, parts, /[.]/)
-    split(release["VERSION_ID"], declared, /[.]/)
-    mismatch = unraid_id &amp;&amp; valid_version(release["VERSION_ID"]) &amp;&amp; declared[1]+0 != parts[1]+0
+    split(declared_version, declared, /[.]/)
+    mismatch = unraid_id &amp;&amp; valid_version(declared_version) &amp;&amp; declared[1]+0 != parts[1]+0
 
     supported = 0
     if (fedora)
@@ -64,16 +66,16 @@ BEGIN {
 </INLINE>
   </FILE>
   <CHANGES>Beta for Unraid 7.2 and later in the 7.x series. Fedora and Unraid 8 require a future integration.</CHANGES>
-  <FILE Name="/boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19a-x86_64-1.txz" Min="7.2.0">
-    <URL>https://github.com/centauri/unraid-templates/releases/download/unraid-advanced-vm-2026.11.19a/unraid-advanced-vm-2026.11.19a-x86_64-1.txz</URL>
-    <SHA256>8f8b9fcfbc691b3c75869a0c3f75cf7edab240560121074e5b66780e4b15fcd0</SHA256>
+  <FILE Name="/boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19d-x86_64-1.txz" Min="7.2.0">
+    <URL>https://github.com/centauri/unraid-templates/releases/download/unraid-advanced-vm-2026.11.19d/unraid-advanced-vm-2026.11.19d-x86_64-1.txz</URL>
+    <SHA256>c7f9f6a0f68fa9e62268eab1034b0eba630d2b57d45208cde3b28073bada3f3b</SHA256>
   </FILE>
   <FILE Run="/bin/bash" Method="install">
     <INLINE>set -eu
-printf '%s\n' '8f8b9fcfbc691b3c75869a0c3f75cf7edab240560121074e5b66780e4b15fcd0  /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19a-x86_64-1.txz' | sha256sum --check --status
+printf '%s\n' 'c7f9f6a0f68fa9e62268eab1034b0eba630d2b57d45208cde3b28073bada3f3b  /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19d-x86_64-1.txz' | sha256sum --check --status
 rc=/usr/local/emhttp/plugins/unraid-advanced-vm/scripts/rc.avm
 if test -x "$rc"; then "$rc" stop; fi
-/sbin/upgradepkg --install-new /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19a-x86_64-1.txz
+/sbin/upgradepkg --install-new /boot/config/plugins/unraid-advanced-vm/unraid-advanced-vm-2026.11.19d-x86_64-1.txz
 "$rc" start
 </INLINE>
   </FILE>
