@@ -5,6 +5,7 @@ Unraid application templates maintained by CentauriPrime.
 - [WeatherNode](https://github.com/centauri/WeatherNode)
 - [Blink Camera Relay](https://github.com/centauri/blink-camera-relay) (experimental; Community Apps listing not yet verified)
 - [Unraid Advanced VM](plugins/unraid-advanced-vm/) (beta native plugin for Unraid 7.2 and later in the 7.x series)
+- [Intel GPU Firmware](https://github.com/centauri/unraid-intel-gpu-firmware) (public alpha; confirmed GSC updates, tested on Unraid 7.4.1)
 
 ## Install
 
@@ -58,3 +59,19 @@ the LAN address in the app dashboard before enabling ONVIF. This field does
 not configure DHCP or assign an IP address.
 
 Support: https://github.com/centauri/blink-camera-relay/issues
+
+## Intel GPU Firmware
+
+Community Applications wrapper: [templates/intel-gpu-firmware.xml](templates/intel-gpu-firmware.xml).
+
+For manual installation, paste this URL into **Plugins → Install Plugin**:
+
+```text
+https://raw.githubusercontent.com/centauri/unraid-intel-gpu-firmware/alpha/intel.gpu.firmware.plg
+```
+
+This public alpha can install compatible newer GSC firmware using official Intel IGSC after hardware/image checks, prepared GPU maintenance and exact-card confirmation. Installation and plugin updates never flash automatically. The wrapper is marked experimental and requires Unraid 7.4.1 or later; later releases are not yet validated.
+
+Only one ASRock A380 has physical update evidence, from an earlier developer build. Other configurations and interrupted-write recovery are unvalidated, and a live reboot test of the new maintenance guard integration remains pending. See the [project README](https://github.com/centauri/unraid-intel-gpu-firmware#what-hardware-support-means) for scope and the update workflow.
+
+The installer and icon stay in the plugin's source repository; this repository contains the indexed wrapper. Support: https://github.com/centauri/unraid-intel-gpu-firmware/issues

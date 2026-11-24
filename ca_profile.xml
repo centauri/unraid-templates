@@ -9,6 +9,8 @@ Also includes Blink Camera Relay, an experimental Blink live-view bridge with a 
 
 Unraid Advanced VM is a beta native plugin for VM hardware, protection and recovery.
 
+Intel GPU Firmware is a public alpha for inspecting Intel GPUs and explicitly confirmed updates of compatible newer GSC firmware using official Intel tools. Hardware support is capability-based; see its template for validation limits.
+
 For questions and bug reports, use the Support link in the relevant app template.
   </Profile>
   <Icon>https://raw.githubusercontent.com/centauri/unraid-templates/main/icons/weathernode.png</Icon>

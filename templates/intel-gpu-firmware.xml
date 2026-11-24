@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Plugin>
+  <Name>Intel GPU Firmware (Alpha)</Name>
+  <PluginURL>https://raw.githubusercontent.com/centauri/unraid-intel-gpu-firmware/alpha/intel.gpu.firmware.plg</PluginURL>
+  <Icon>https://raw.githubusercontent.com/centauri/unraid-intel-gpu-firmware/2026.11.24i-alpha2/web/intel-gpu-firmware.png</Icon>
+  <Support>https://github.com/centauri/unraid-intel-gpu-firmware/issues</Support>
+  <Project>https://github.com/centauri/unraid-intel-gpu-firmware</Project>
+  <ReadMe>https://raw.githubusercontent.com/centauri/unraid-intel-gpu-firmware/main/README.md</ReadMe>
+  <Overview>Public alpha for inspecting Intel GPUs and installing compatible newer GSC firmware using official Intel IGSC. Downloads a reviewed Intel firmware package on request, verifies hashes, records firmware history and checks Intel release information. Installation and plugin updates never flash automatically.
+
+Updates require a supported host Intel driver and MEI interface, a compatible newer image, prepared GPU maintenance and explicit confirmation of the exact card. After approval, only affected Docker containers and VMs are stopped and their normal managed starts blocked; privileged containers are included. Unrelated running workloads remain running. Unsupported GPU access, including native LXC access, blocks maintenance.
+
+Tested host: Unraid 7.4.1 / x86_64. One ASRock Arc A380 was physically updated with an earlier developer build and verified after reboot. Other vendors, generations, multi-GPU systems and passthrough restoration are unvalidated; detection does not guarantee update support. A live reboot test of the new maintenance guard integration is pending.
+
+GSC only: no GPU BIOS, OPROM, firmware-data or HDMI updates, arbitrary firmware uploads, forced flashing, downgrades or recovery guarantee. An interrupted or failed update can leave the GPU unusable. A UPS is recommended but optional. Allow about 2.1 GB of temporary space for firmware staging.</Overview>
+  <Category>Tools:Utilities</Category>
+  <MinVer>7.4.1</MinVer>
+  <Beta>true</Beta>
+  <License>MIT</License>
+  <ExtraSearchTerms>Intel Arc GSC IGSC GPU firmware</ExtraSearchTerms>
+</Plugin>
