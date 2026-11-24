@@ -2,6 +2,7 @@
 <Plugin>
   <Name>Unraid Advanced VM</Name>
   <PluginURL>https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.plg</PluginURL>
+  <PluginAuthor>centauri</PluginAuthor>
   <Icon>https://raw.githubusercontent.com/centauri/unraid-templates/main/plugins/unraid-advanced-vm/unraid-advanced-vm.png</Icon>
   <Support>https://github.com/centauri/unraid-templates/issues</Support>
   <Project>https://github.com/centauri/unraid-templates/tree/main/plugins/unraid-advanced-vm</Project>
